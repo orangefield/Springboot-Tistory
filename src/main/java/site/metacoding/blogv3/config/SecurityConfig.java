@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 @EnableWebSecurity // 해당 파일로 시큐리티 활성화
 @Configuration
@@ -26,7 +27,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/loginForm")
+                // .usernameParameter("userId")
+                // .passwordParameter("pwd")
+                .loginPage("/login-form")
+                .loginProcessingUrl("/login") // login 프로세스를 탄다
+                // .failureHandler(null)
+                // .successHandler(null)
                 .defaultSuccessUrl("/");
     }
 }

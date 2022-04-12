@@ -32,6 +32,8 @@ public class User {
     @Column(length = 20, nullable = false, unique = true)
     private String username;
 
+    // private String role; // admin, manager, guest, user
+
     // 1234 -> SHA256(해시 알고리즘) 암호화 -> 안하면 security가 거부함
     @Column(length = 100, nullable = false)
     private String password;
