@@ -21,6 +21,10 @@ public class MainController {
         // SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         // System.out.println(lu.getUser().getEmail());
 
-        return "main";
+        if (loginUser == null) {
+            return "main";
+        } else {
+            return "redirect:/user/" + loginUser.getUser().getId() + "/post";
+        }
     }
 }
